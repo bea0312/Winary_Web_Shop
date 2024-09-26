@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .container-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            width: 100%;
+            margin-top: 15vh;
+        }
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+        .card-body {
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 20px;
+        }
+        .navbar-nav .nav-link:hover {
+            font-size: 1.2em;
+            color: black;
+            font-weight: bold;
+        }
+        a.btn:hover {
+            font-size: 1.1em;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<header class="bg-light p-4 mb-4">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.jpg" width="50" height="50" class="d-inline-block align-top" alt="Logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/"><i class="bi bi-house"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shop">Shop<img width="23" height="23" src="https://img.icons8.com/carbon-copy/100/wine-glass.png" alt="wine-glass"/></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/mypurchaseHistory">Orders<i class="bi bi-cart-check"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cart">
+                                <i class="bi bi-cart4"></i> <span class="badge bg-dark rounded-pill" th:text="${cartCount}"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/logout}"><i class="bi bi-box-arrow-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="container-main">
+
+    <div class="card text-center" style="height: inherit; width: 39vw; margin: 1vw;
+    background-image: url('https://worldfinancialreview.com/wp-content/uploads/2021/01/PA-Wine-Blog-17_image-1.jpg'); background-size: cover">
+    </div>
+
+    <div class="card text-center" style="height: inherit; width: 39vw; margin: 1vw;
+    background-image: url('https://media.istockphoto.com/id/1084996534/photo/wine-glasses-in-a-row-buffet-table-celebration-of-wine-tasting-nightlife-celebration-and.jpg?s=612x612&w=0&k=20&c=PUeVD8JYivag3zeMiEgDYTHDfmIjT0mkuraLB2h7kkU=');">
+        <div class="card-body" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <h2 class="card-title" style="color: white">Discover Our Collection</h2>
+            <p class="card-text" style="color: white">Browse our selection of fine wines.</p>
+            <a href="/shop" class="btn btn-light" style="transition: all 0.3s;">
+                Start Shopping
+            </a>
+        </div>
+    </div>
+
+    <div class="card text-center" style="height: inherit; width: 39vw; margin: 1vw;
+    background-image: url('https://wineflavorguru.com/wp-content/uploads/2023/12/Easy-Tips-on-How-to-Store-Your-Wine-Properly.jpg'); background-size: cover">
+    </div>
+</main>
+</body>
+</html>

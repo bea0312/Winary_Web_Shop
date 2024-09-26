@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Wine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .navbar-nav .nav-link:hover {
+            font-size: 1.2em;
+            color: black;
+            font-weight: bold;
+        }
+         .wine-detail {
+             max-width: 1000px;
+             margin: 0 auto;
+             padding: 20px;
+             background-color: #f8f9fa;
+             border-radius: 10px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         }
+        .wine-detail img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .wine-detail .btn {
+            margin-top: 20px;
+        }
+        .wine-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .btn:hover{
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+<header class="bg-light p-4 mb-4">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.jpg" width="50" height="50" class="d-inline-block align-top" alt="Logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/"><i class="bi bi-house"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shop">Shop<img width="23" height="23" src="https://img.icons8.com/carbon-copy/100/wine-glass.png" alt="wine-glass"/></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/mypurchaseHistory">Orders<i class="bi bi-cart-check"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cart">
+                                <i class="bi bi-cart4"></i> <span class="badge bg-dark rounded-pill" th:text="${cartCount}"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/logout}"><i class="bi bi-box-arrow-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="container mt-5">
+        <div class="wine-detail row">
+            <div class="col-md-4">
+                <img th:src="@{/images/{imageName}(imageName=${wine.imageName})}" alt="Wine Image" class="img-fluid">
+            </div>
+            <div class="col-md-8 wine-info">
+                <h2 th:text="${wine.name}"></h2>
+                <p th:text="${wine.description}"></p>
+                <p>Category: <span th:text="${wine.category.name}"></span></p>
+                <p>Liters: <span th:text="${wine.liters}"></span></p>
+                <p>
+                    <span class="fs-3 float-end">€<span th:text="${wine.price}"></span></span>
+                </p>
+                <a th:href="@{/addToCart/{id}(id=${wine.id})}" class="btn btn-dark">Add to Cart  <i class="bi bi-cart-plus"></i></a>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
